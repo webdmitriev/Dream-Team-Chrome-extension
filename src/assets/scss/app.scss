@@ -1,0 +1,30 @@
+@use "./reset";
+@use "./variables";
+@use "./global";
+@use "./data";
+
+// blocks
+@use "./blocks/cities";
+@use "./blocks/clock";
+@use "./blocks/search-container";
+
+/* Фоновое изображение */
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white center / cover no-repeat;
+  filter: brightness(0.6);
+  z-index: -1;
+}
+
+/* Основной контент */
+.content {
+  position: relative;
+  align-content: flex-start;
+  height: 100%;
+  padding: 20px;
+  z-index: 1;
+}

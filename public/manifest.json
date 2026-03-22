@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Dream Team - Webdmitriev",
+  "version": "1.0.0",
+  "description": "Кастомная страница новой вкладки",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [],
+  "icons": {
+    "128": "./icons/icon128.png"
+  }
+}

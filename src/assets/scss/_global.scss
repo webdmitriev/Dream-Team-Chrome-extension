@@ -1,0 +1,157 @@
+.df-fs-fs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.df-fs-ce {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.df-fs-fe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.df-fs-st {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.df-ce-fs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+.df-ce-ce {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.df-ce-fe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+}
+.df-ce-st {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.df-fe-fs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.df-fe-ce {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+.df-fe-fe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.df-fe-st {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+.df-sp-fs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.df-sp-ce {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.df-sp-fe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.df-sp-st {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.w-100p {
+  width: 100%;
+}
+
+.scroll-line-none::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.scroll-line-none::-webkit-scrollbar-button {
+  background-color: transparent;
+}
+.scroll-line-none::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.scroll-line-none::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+.scroll-line-none::-webkit-scrollbar-thumb {
+  height: 0px;
+  background-color: transparent;
+  border-radius: 3px;
+}
+.scroll-line-none::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+.scroll-line-none::-webkit-resizer {
+  background-color: transparent;
+}
+
+button,
+input,
+textarea {
+  cursor: pointer;
+}
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+@media (max-width: 1680px) {
+}
+@media (max-width: 1366px) {
+}
+@media (max-width: 1199px) {
+}
+@media (max-width: 991px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+}
+@media (max-width: 460px) {
+}
+@media (max-width: 400px) {
+}

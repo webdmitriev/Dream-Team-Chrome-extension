@@ -1,0 +1,20 @@
+.clock {
+  margin-bottom: 80px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  .time {
+    font-weight: 600;
+    font-size: 84px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: var(--font-height);
+    color: var(--white-color);
+  }
+
+  .date {
+    width: 100%;
+    font-size: var(--h4-size);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    color: var(--white-color);
+  }
+}
