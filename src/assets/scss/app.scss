@@ -6,25 +6,23 @@
 // blocks
 @use "./blocks/cities";
 @use "./blocks/clock";
-@use "./blocks/search-container";
-
-/* Фоновое изображение */
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white center / cover no-repeat;
-  filter: brightness(0.6);
-  z-index: -1;
-}
+@use "./blocks/sites";
+@use "./blocks/translate";
+@use "./blocks/links";
+@use "./blocks/search";
 
 /* Основной контент */
-.content {
+.dream-team {
   position: relative;
   align-content: flex-start;
+  gap: 12px;
   height: 100%;
-  padding: 20px;
+  padding: 12px;
+  padding-bottom: 120px;
   z-index: 1;
+  .dream-team__left,
+  .dream-team__right {
+    width: 100%;
+    max-width: calc(50% - 24px);
+  }
 }

@@ -1,0 +1,38 @@
+.sites {
+  gap: 6px;
+  .sites-item {
+    position: relative;
+    flex: 1 1 170px;
+    gap: 4px;
+    padding: 8px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    .site-name {
+      width: 100%;
+      margin-bottom: 4px;
+      font-weight: 500;
+      font-size: var(--h6-size);
+    }
+    .site-front {
+      width: 100%;
+      max-width: calc(50% - 2px);
+      margin-bottom: 4px;
+      padding: 4px;
+      color: var(--black-color);
+      background-color: var(--white-color);
+    }
+    .site-back {
+      width: 100%;
+      max-width: calc(50% - 2px);
+      padding: 4px;
+      color: var(--black-color);
+      background-color: var(--white-color);
+    }
+    span {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import Clock from "./components/Clock";
 import Cities from "./components/Cities";
+import Sites from "./components/Sites";
+import Translate from "./components/Translate";
 import Search from "./components/Search";
 import Links from "./components/Links";
 
@@ -17,11 +19,18 @@ export default function App() {
     <div className="container">
       <div className="background" style={{backgroundImage: `url(${randomBg})`}}></div>
 
-      <div className="content">
-        <Cities />
-        <Clock />
+      <div className="dream-team df-sp-fs w-100p">
+        <div className="dream-team__left">
+          <Cities />
+          <Clock />
+          <Sites />
+        </div>
+        <div className="dream-team__right">
+          <Translate />
+          <Links />
+        </div>
         <Search />
-        <Links />
+        {/* <Links /> */}
       </div>
     </div>
   );

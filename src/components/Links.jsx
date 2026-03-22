@@ -1,28 +1,27 @@
-import { useEffect, useState } from "react";
+import youtube from "../assets/img/icon-youtube.svg";
+import github from "../assets/img/icon-github.svg";
+import gmail from "../assets/img/icon-gmail.svg";
+import deepseek from "../assets/img/icon-deepseek.svg";
+import bitrix24 from "../assets/img/icon-bitrix24.svg";
+import regru from "../assets/img/icon-regru.svg";
+import figma from "../assets/img/icon-figma.svg";
 
 export default function Links() {
-  const [links, setLinks] = useState([]);
-
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("customLinks"));
-
-    if (saved) {
-      setLinks(saved);
-    } else {
-      const defaultLinks = [
-        { name: "YouTube", url: "https://youtube.com" },
-        { name: "GitHub", url: "https://github.com/webdmitriev/" },
-        { name: "Gmail", url: "https://mail.google.com" }
-      ];
-      setLinks(defaultLinks);
-    }
-  }, []);
+  const defaultLinks = [
+    { name: "YouTube", url: "https://youtube.com", icon: youtube },
+    { name: "GitHub", url: "https://github.com/webdmitriev/", icon: github },
+    { name: "Gmail", url: "https://mail.google.com", icon: gmail },
+    { name: "Deepseek", url: "https://chat.deepseek.com/", icon: deepseek },
+    { name: "Bitrix24", url: "https://bitrix.dreamteamcompany.ru/stream/", icon: bitrix24 },
+    { name: "Regru", url: "https://www.reg.ru/user/account/", icon: regru },
+    { name: "Figma", url: "https://www.figma.com/design/1IdnIbq1YMWl9ySe2hHMwe/Dream-Team?node-id=0-1&t=sXOAMLhX1X7qzI3V-1", icon: figma },
+  ];
 
   return (
-    <div className="links-grid">
-      {links.map((link) => (
-        <a key={link.url} href={link.url} target="_blank">
-          {link.name}
+    <div className="links df-fs-fs w-100p">
+      {defaultLinks.map((link) => (
+        <a key={link.url} href={link.url} target="_blank" className="link df-ce-ce">
+          {link.icon ? <img src={link.icon} alt={link.name} title={link.name} /> : null}
         </a>
       ))}
     </div>
