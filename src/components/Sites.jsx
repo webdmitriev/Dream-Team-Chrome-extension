@@ -9,6 +9,7 @@ const sites = [
   { site: "Кемерово", front: "https://kemerovodental.ru/", back: "https://kemerovodental.ru/wp-admin/" },
   { site: "Краснодар", front: "https://komandamechty-krasnodar.ru/", back: "https://komandamechty-krasnodar.ru/wp-admin/" },
   { site: "Улан-Удэ", front: "https://komandamechty-ulan-ude.ru/", back: "https://komandamechty-ulan-ude.ru/wp-admin/" },
+  { site: "Волгоград", front: "https://komandamechty-volgograd.ru/", back: "https://komandamechty-volgograd.ru/wp-admin/" },
   { site: "Тольятти", front: "https://komandamechty-togliatti.ru/", back: "https://komandamechty-togliatti.ru/wp-admin/" },
   { site: "Нижний Новгород", front: "https://alldent32.ru/", back: "https://alldent32.ru/wp-admin/" },
   { site: "Новокузнецк", front: "https://novokuznetskdental.ru/", back: "https://novokuznetskdental.ru/wp-admin/" },

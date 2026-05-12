@@ -1,0 +1,16 @@
+.tools-grid {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+  .tool-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+}

@@ -1,9 +1,14 @@
+import React, { useState } from 'react';
+
 import Clock from "./components/Clock";
 import Cities from "./components/Cities";
 import Sites from "./components/Sites";
 import Translate from "./components/Translate";
 import Search from "./components/Search";
 import Links from "./components/Links";
+
+import Modal from './components/Modal';
+import ImageOptimizer from './components/ImageOptimizer';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -15,6 +20,8 @@ import { getRandomItem } from "./utils/getRandomItem";
 const randomBg = getRandomItem(backgrounds);
 
 export default function App() {
+  const [isOptimizerOpen, setIsOptimizerOpen] = useState(false);
+
   return (
     <div className="container">
       <div className="background" style={{backgroundImage: `url(${randomBg})`}}></div>
@@ -28,9 +35,16 @@ export default function App() {
         <div className="dream-team__right">
           <Translate />
           <Links />
+          <div className="tools-grid">
+            <button onClick={() => setIsOptimizerOpen(true)} className="tool-card">🖼️ Optimize Images</button>
+          </div>
         </div>
         <Search />
-        {/* <Links /> */}
+
+        {/* Модалка с оптимизатором */}
+        <Modal isOpen={isOptimizerOpen} onClose={() => setIsOptimizerOpen(false)}>
+          <ImageOptimizer />
+        </Modal>
       </div>
     </div>
   );
