@@ -6,9 +6,9 @@ import Sites from "./components/Sites";
 import Translate from "./components/Translate";
 import Search from "./components/Search";
 import Links from "./components/Links";
-
 import Modal from './components/Modal';
 import ImageOptimizer from './components/ImageOptimizer';
+import Typograf from './components/Typograf';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -21,6 +21,7 @@ const randomBg = getRandomItem(backgrounds);
 
 export default function App() {
   const [isOptimizerOpen, setIsOptimizerOpen] = useState(false);
+  const [isTypografOpen, setIsTypografOpen] = useState(false);
 
   return (
     <div className="container">
@@ -38,12 +39,19 @@ export default function App() {
           <div className="tools-grid">
             <button onClick={() => setIsOptimizerOpen(true)} className="tool-card">🖼️ Optimize Images</button>
           </div>
+          <div className="tools-grid">
+            <button onClick={() => setIsTypografOpen(true)} className="tool-card">✍️ Typograf</button>
+          </div>
         </div>
         <Search />
 
         {/* Модалка с оптимизатором */}
         <Modal isOpen={isOptimizerOpen} onClose={() => setIsOptimizerOpen(false)}>
           <ImageOptimizer />
+        </Modal>
+
+        <Modal isOpen={isTypografOpen} onClose={() => setIsTypografOpen(false)}>
+          <Typograf />
         </Modal>
       </div>
     </div>
