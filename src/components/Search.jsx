@@ -18,7 +18,7 @@ export default function Search() {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      searchGoogle(); // или searchYandex(), выбери какой по умолчанию
+      searchYandex(); // или searchYandex(), выбери какой по умолчанию
     }
   };
 
