@@ -21,10 +21,8 @@ export default function Links() {
     { name: "Bitrix24", url: "https://bitrix.dreamteamcompany.ru/stream/", icon: bitrix24 },
     { name: "Regru", url: "https://www.reg.ru/user/account/", icon: regru },
     { name: "Figma", url: "https://www.figma.com/design/1IdnIbq1YMWl9ySe2hHMwe/Dream-Team?node-id=0-1&t=sXOAMLhX1X7qzI3V-1", icon: figma },
-    { name: "Tiny", url: "https://tinyjpg.com/", icon: tiny },
     { name: "Disk Yandex", url: "https://disk.yandex.ru/client/disk", icon: diskYandex },
     { name: "Beget", url: "https://beget.com/", icon: beget },
-    { name: "Typograf", url: "https://www.artlebedev.ru/typograf/", icon: typograf },
     { name: "Telemost Yandex", url: "https://telemost.yandex.ru/", icon: telemostYandex },
   ];
 
