@@ -9,6 +9,7 @@ import Links from "./components/Links";
 import Modal from './components/Modal';
 import ImageOptimizer from './components/ImageOptimizer';
 import Typograf from './components/Typograf';
+import ColorWizard from './components/ColorWizard';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -22,6 +23,7 @@ const randomBg = getRandomItem(backgrounds);
 export default function App() {
   const [isOptimizerOpen, setIsOptimizerOpen] = useState(false);
   const [isTypografOpen, setIsTypografOpen] = useState(false);
+  const [isColorWizardOpen, setIsColorWizardOpen] = useState(false);
 
   return (
     <div className="container">
@@ -42,6 +44,9 @@ export default function App() {
           <div className="tools-grid">
             <button onClick={() => setIsTypografOpen(true)} className="tool-card">✍️ Typograf</button>
           </div>
+          <div className="tools-grid">
+            <button onClick={() => setIsColorWizardOpen(true)} className="tool-card">🔮 Color Wizard</button>
+          </div>
         </div>
         <Search />
 
@@ -52,6 +57,10 @@ export default function App() {
 
         <Modal isOpen={isTypografOpen} onClose={() => setIsTypografOpen(false)}>
           <Typograf />
+        </Modal>
+
+        <Modal isOpen={isColorWizardOpen} onClose={() => setIsColorWizardOpen(false)}>
+          <ColorWizard />
         </Modal>
       </div>
     </div>
