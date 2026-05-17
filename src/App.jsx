@@ -10,6 +10,7 @@ import Modal from './components/Modal';
 import ImageOptimizer from './components/ImageOptimizer';
 import Typograf from './components/Typograf';
 import ColorWizard from './components/ColorWizard';
+import SvgOptimizer from './components/SvgOptimizer';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -24,6 +25,7 @@ export default function App() {
   const [isOptimizerOpen, setIsOptimizerOpen] = useState(false);
   const [isTypografOpen, setIsTypografOpen] = useState(false);
   const [isColorWizardOpen, setIsColorWizardOpen] = useState(false);
+  const [isSvgOptimizerOpen, setIsSvgOptimizerOpen] = useState(false);
 
   return (
     <div className="container">
@@ -47,6 +49,9 @@ export default function App() {
           <div className="tools-grid">
             <button onClick={() => setIsColorWizardOpen(true)} className="tool-card">🔮 Color Wizard</button>
           </div>
+          <div className="tools-grid">
+            <button onClick={() => setIsSvgOptimizerOpen(true)} className="tool-card">⚡ SVG Optimizer</button>
+          </div>
         </div>
         <Search />
 
@@ -61,6 +66,10 @@ export default function App() {
 
         <Modal isOpen={isColorWizardOpen} onClose={() => setIsColorWizardOpen(false)}>
           <ColorWizard />
+        </Modal>
+
+        <Modal isOpen={isSvgOptimizerOpen} onClose={() => setIsSvgOptimizerOpen(false)}>
+          <SvgOptimizer />
         </Modal>
       </div>
     </div>
