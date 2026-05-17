@@ -13,6 +13,7 @@ import ColorWizard from './components/ColorWizard';
 import SvgOptimizer from './components/SvgOptimizer';
 import DataGenerator from './components/DataGenerator';
 import ShadowWizard from './components/ShadowWizard';
+import JsFilters from './components/JsFilters';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -30,6 +31,7 @@ export default function App() {
   const [isSvgOptimizerOpen, setIsSvgOptimizerOpen] = useState(false);
   const [isDataGenOpen, setIsDataGenOpen] = useState(false);
   const [isShadowWizardOpen, setIsShadowWizardOpen] = useState(false);
+  const [isJsFiltersOpen, setIsJsFiltersOpen] = useState(false);
 
   return (
     <div className="container">
@@ -63,6 +65,9 @@ export default function App() {
             <div className="tools-grid">
               <button onClick={() => setIsShadowWizardOpen(true)} className="tool-card">👥 Shadow Wizard</button>
             </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsJsFiltersOpen(true)} className="tool-card">🦊 JS Filters</button>
+            </div>
           </div>
         </div>
         <Search />
@@ -90,6 +95,10 @@ export default function App() {
 
         <Modal isOpen={isShadowWizardOpen} onClose={() => setIsShadowWizardOpen(false)}>
           <ShadowWizard />
+        </Modal>
+
+        <Modal isOpen={isJsFiltersOpen} onClose={() => setIsJsFiltersOpen(false)}>
+          <JsFilters />
         </Modal>
       </div>
     </div>
