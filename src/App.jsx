@@ -44,23 +44,25 @@ export default function App() {
         <div className="dream-team__right">
           <Translate />
           <Links />
-          <div className="tools-grid">
-            <button onClick={() => setIsOptimizerOpen(true)} className="tool-card">🖼️ Optimize Images</button>
-          </div>
-          <div className="tools-grid">
-            <button onClick={() => setIsTypografOpen(true)} className="tool-card">✍️ Typograf</button>
-          </div>
-          <div className="tools-grid">
-            <button onClick={() => setIsColorWizardOpen(true)} className="tool-card">🔮 Color Wizard</button>
-          </div>
-          <div className="tools-grid">
-            <button onClick={() => setIsSvgOptimizerOpen(true)} className="tool-card">⚡ SVG Optimizer</button>
-          </div>
-          <div className="tools-grid">
-            <button onClick={() => setIsDataGenOpen(true)} className="tool-card">🎲 Data Generator</button>
-          </div>
-          <div className="tools-grid">
-            <button onClick={() => setIsShadowWizardOpen(true)} className="tool-card">👥 Shadow Wizard</button>
+          <div className="tools-grids">
+            <div className="tools-grid">
+              <button onClick={() => setIsOptimizerOpen(true)} className="tool-card">🖼️ Optimize Images</button>
+            </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsTypografOpen(true)} className="tool-card">✍️ Typograf</button>
+            </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsColorWizardOpen(true)} className="tool-card">🔮 Color Wizard</button>
+            </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsSvgOptimizerOpen(true)} className="tool-card">⚡ SVG Optimizer</button>
+            </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsDataGenOpen(true)} className="tool-card">🎲 Data (text) Generator</button>
+            </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsShadowWizardOpen(true)} className="tool-card">👥 Shadow Wizard</button>
+            </div>
           </div>
         </div>
         <Search />

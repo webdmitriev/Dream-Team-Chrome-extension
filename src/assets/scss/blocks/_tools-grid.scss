@@ -1,7 +1,15 @@
-.tools-grid {
-  display: block;
+.tools-grids {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 8px;
   width: 100%;
-  margin-bottom: 10px;
+}
+
+.tools-grid {
+  flex: 1 1 240px;
+  display: block;
   padding: 12px;
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 5px;
