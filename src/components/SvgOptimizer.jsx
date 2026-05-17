@@ -66,16 +66,6 @@ export default function SvgOptimizer() {
       />
 
       <div style={styles.optionsRow}>
-        <label style={styles.checkboxLabel}>
-          <input
-            type="checkbox"
-            checked={isCurrentColor}
-            onChange={(e) => setIsCurrentColor(e.target.checked)}
-            style={styles.checkbox}
-          />
-          Заменять цвета на `currentColor`
-        </label>
-        
         <button onClick={handleProcess} style={styles.processBtn} type="button">
           Очистить SVG
         </button>
@@ -120,6 +110,7 @@ const styles = {
     marginTop: 0,
     marginBottom: '20px',
     fontSize: '20px',
+    color: '#222',
   },
   textarea: {
     width: '100%',
@@ -136,20 +127,9 @@ const styles = {
   },
   optionsRow: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     margin: '15px 0',
-  },
-  checkboxLabel: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontSize: '14px',
-    color: 'rgba(255, 255, 255, 0.8)',
-    cursor: 'pointer',
-  },
-  checkbox: {
-    cursor: 'pointer',
   },
   processBtn: {
     background: '#34c759',
