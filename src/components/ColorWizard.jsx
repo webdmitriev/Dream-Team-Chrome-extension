@@ -165,6 +165,7 @@ const styles = {
     marginTop: 0,
     marginBottom: '20px',
     fontSize: '20px',
+    color: 'rgba(0,0,0,0.8)',
   },
   inputRow: {
     display: 'flex',
