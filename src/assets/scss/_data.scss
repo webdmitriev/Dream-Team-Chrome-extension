@@ -21,3 +21,12 @@ body {
   filter: brightness(0.6);
   z-index: -1;
 }
+
+.translator-card {
+  textarea {
+    color: #fff;
+    &::placeholder {
+      color: #fff;
+    }
+  }
+}

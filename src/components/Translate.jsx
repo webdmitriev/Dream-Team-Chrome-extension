@@ -124,7 +124,6 @@ const styles = {
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     border: '1px solid rgba(255, 255, 255, 0.1)',
     borderRadius: '8px',
-    color: '#fff',
     padding: '10px',
     fontSize: '14px',
     fontFamily: 'inherit',
