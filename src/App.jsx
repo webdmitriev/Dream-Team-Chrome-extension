@@ -12,6 +12,7 @@ import Typograf from './components/Typograf';
 import ColorWizard from './components/ColorWizard';
 import SvgOptimizer from './components/SvgOptimizer';
 import DataGenerator from './components/DataGenerator';
+import ShadowWizard from './components/ShadowWizard';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -28,6 +29,7 @@ export default function App() {
   const [isColorWizardOpen, setIsColorWizardOpen] = useState(false);
   const [isSvgOptimizerOpen, setIsSvgOptimizerOpen] = useState(false);
   const [isDataGenOpen, setIsDataGenOpen] = useState(false);
+  const [isShadowWizardOpen, setIsShadowWizardOpen] = useState(false);
 
   return (
     <div className="container">
@@ -57,6 +59,9 @@ export default function App() {
           <div className="tools-grid">
             <button onClick={() => setIsDataGenOpen(true)} className="tool-card">🎲 Data Generator</button>
           </div>
+          <div className="tools-grid">
+            <button onClick={() => setIsShadowWizardOpen(true)} className="tool-card">👥 Shadow Wizard</button>
+          </div>
         </div>
         <Search />
 
@@ -79,6 +84,10 @@ export default function App() {
 
         <Modal isOpen={isDataGenOpen} onClose={() => setIsDataGenOpen(false)}>
           <DataGenerator />
+        </Modal>
+
+        <Modal isOpen={isShadowWizardOpen} onClose={() => setIsShadowWizardOpen(false)}>
+          <ShadowWizard />
         </Modal>
       </div>
     </div>
