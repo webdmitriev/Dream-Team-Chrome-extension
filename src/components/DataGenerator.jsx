@@ -199,7 +199,7 @@ const styles = {
   },
   resultTitle: {
     fontSize: '13px',
-    color: 'rgba(255, 255, 255, 0.5)',
+    color: 'rgba(0, 0, 0, 0.5)',
   },
   copyBtn: {
     background: 'rgba(255, 255, 255, 0.1)',
@@ -213,9 +213,9 @@ const styles = {
   textarea: {
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    border: '1px solid rgba(0, 0, 0, 0.1)',
     borderRadius: '8px',
-    color: '#fff',
+    color: '#000',
     padding: '12px',
     fontSize: '13px',
     fontFamily: 'monospace',
