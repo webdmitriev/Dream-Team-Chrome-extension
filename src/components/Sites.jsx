@@ -21,6 +21,9 @@ const sites = [
   { site: "Новосибирск", front: "https://easystomdental.ru/", back: "https://easystomdental.ru/wp-admin/" },
   { site: "Калининград", front: "https://kaliningrad-dental.ru/", back: "https://kaliningrad-dental.ru/wp-admin/" },
   { site: "Барнаул", front: "https://stomatologiachehova.ru/", back: "https://stomatologiachehova.ru/wp-admin/" },
+  { site: "Almaty ru", front: "https://dreamteam-almaty.kz/", back: "https://dreamteam-almaty.kz/wp-admin/" },
+  { site: "Almaty en", front: "https://dreamteam-almaty.kz/en/", back: "https://dreamteam-almaty.kz/en/wp-admin/" },
+  { site: "Almaty kz", front: "https://dreamteam-almaty.kz/kz/", back: "https://dreamteam-almaty.kz/kz/wp-admin/" },
 ];
 
 export default function Sites() {
