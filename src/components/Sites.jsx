@@ -16,9 +16,9 @@ const sites = [
 
   { site: "Тольятти", front: "https://komandamechty-togliatti.ru/", back: "https://komandamechty-togliatti.ru/wp-admin/" },
   { site: "Нижний Новгород", front: "https://alldent32.ru/", back: "https://alldent32.ru/wp-admin/" },
+  { site: "Санкт-Петербург", front: "https://worlddentspb.ru/", back: "https://worlddentspb.ru/wp-admin/" },
   { site: "Новокузнецк", front: "https://novokuznetskdental.ru/", back: "https://novokuznetskdental.ru/wp-admin/" },
   { site: "Новосибирск", front: "https://easystomdental.ru/", back: "https://easystomdental.ru/wp-admin/" },
-  { site: "Санкт-Петербург", front: "https://worlddentspb.ru/", back: "https://worlddentspb.ru/wp-admin/" },
   { site: "Калининград", front: "https://kaliningrad-dental.ru/", back: "https://kaliningrad-dental.ru/wp-admin/" },
   { site: "Барнаул", front: "https://stomatologiachehova.ru/", back: "https://stomatologiachehova.ru/wp-admin/" },
 ];
