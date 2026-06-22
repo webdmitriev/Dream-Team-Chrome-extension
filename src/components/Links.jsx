@@ -24,6 +24,7 @@ export default function Links() {
     { name: "Disk Yandex", url: "https://disk.yandex.ru/client/disk", icon: diskYandex },
     { name: "Beget", url: "https://beget.com/", icon: beget },
     { name: "Telemost Yandex", url: "https://telemost.yandex.ru/", icon: telemostYandex },
+    { name: "Excel", url: "https://docs.google.com/spreadsheets/u/0/", icon: gmail },
   ];
 
   return (
