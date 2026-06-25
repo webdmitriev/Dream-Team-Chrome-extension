@@ -14,6 +14,7 @@ import SvgOptimizer from './components/SvgOptimizer';
 import DataGenerator from './components/DataGenerator';
 import ShadowWizard from './components/ShadowWizard';
 import JsFilters from './components/JsFilters';
+import FluidTypographyCalculator from './components/FluidTypographyCalculator';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -69,6 +70,7 @@ export default function App() {
               <button onClick={() => setIsJsFiltersOpen(true)} className="tool-card">🦊 JS Filters</button>
             </div>
           </div>
+          <FluidTypographyCalculator />
         </div>
         <Search />
 
