@@ -5,9 +5,10 @@ import deepseek from "../assets/img/icon-deepseek.svg";
 import bitrix24 from "../assets/img/icon-bitrix24.svg";
 import regru from "../assets/img/icon-regru.svg";
 import figma from "../assets/img/icon-figma.svg";
+import excel from "../assets/img/icon-excel.svg";
+import beget from "../assets/img/icon-beget.svg";
 
 import tiny from "../assets/img/icon-tiny.png";
-import beget from "../assets/img/icon-beget.png";
 import diskYandex from "../assets/img/icon-disk-yandex.png";
 import telemostYandex from "../assets/img/icon-telemost-yandex.png";
 import typograf from "../assets/img/icon-typograf.png";
@@ -24,7 +25,7 @@ export default function Links() {
     { name: "Disk Yandex", url: "https://disk.yandex.ru/client/disk", icon: diskYandex },
     { name: "Beget", url: "https://beget.com/", icon: beget },
     { name: "Telemost Yandex", url: "https://telemost.yandex.ru/", icon: telemostYandex },
-    { name: "Excel", url: "https://docs.google.com/spreadsheets/u/0/", icon: gmail },
+    { name: "Excel", url: "https://docs.google.com/spreadsheets/u/0/", icon: excel },
   ];
 
   return (
