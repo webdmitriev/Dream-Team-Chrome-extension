@@ -8,6 +8,7 @@ import figma from "../assets/img/icon-figma.svg";
 import excel from "../assets/img/icon-excel.svg";
 import beget from "../assets/img/icon-beget.svg";
 import metrica from "../assets/img/icon-metrica.svg";
+import webmaster from "../assets/img/icon-yandex-webmaster.svg";
 
 import tiny from "../assets/img/icon-tiny.png";
 import diskYandex from "../assets/img/icon-disk-yandex.png";
@@ -28,6 +29,7 @@ export default function Links() {
     { name: "Telemost Yandex", url: "https://telemost.yandex.ru/", icon: telemostYandex },
     { name: "Excel", url: "https://docs.google.com/spreadsheets/u/0/", icon: excel },
     { name: "Metrica", url: "https://metrika.yandex.ru/list", icon: metrica },
+    { name: "Metrica", url: "https://webmaster.yandex.ru/sites/", icon: webmaster },
   ];
 
   return (
