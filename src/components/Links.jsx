@@ -29,7 +29,7 @@ export default function Links() {
     { name: "Telemost Yandex", url: "https://telemost.yandex.ru/", icon: telemostYandex },
     { name: "Excel", url: "https://docs.google.com/spreadsheets/u/0/", icon: excel },
     { name: "Metrica", url: "https://metrika.yandex.ru/list", icon: metrica },
-    { name: "Metrica", url: "https://webmaster.yandex.ru/sites/", icon: webmaster },
+    { name: "Webmaster", url: "https://webmaster.yandex.ru/sites/", icon: webmaster },
   ];
 
   return (
