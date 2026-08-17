@@ -3,10 +3,27 @@
   "name": "Dream Team - Webdmitriev",
   "version": "1.0.01",
   "description": "Кастомная страница новой вкладки",
+
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "permissions": ["storage"],
+
+  "permissions": [
+    "storage"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["siteStyles.js"],
+      "run_at": "document_start"
+    }
+  ],
+
   "icons": {
     "128": "./icons/icon128.png"
   }

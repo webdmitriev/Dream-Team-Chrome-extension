@@ -15,6 +15,7 @@ import DataGenerator from './components/DataGenerator';
 import ShadowWizard from './components/ShadowWizard';
 import JsFilters from './components/JsFilters';
 import FluidTypographyCalculator from './components/FluidTypographyCalculator';
+import SiteStylesManager from './components/SiteStylesManager';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -33,6 +34,7 @@ export default function App() {
   const [isDataGenOpen, setIsDataGenOpen] = useState(false);
   const [isShadowWizardOpen, setIsShadowWizardOpen] = useState(false);
   const [isJsFiltersOpen, setIsJsFiltersOpen] = useState(false);
+  const [isSiteStylesOpen, setIsSiteStylesOpen] = useState(false);
 
   return (
     <div className="container">
@@ -69,6 +71,9 @@ export default function App() {
             <div className="tools-grid">
               <button onClick={() => setIsJsFiltersOpen(true)} className="tool-card">🦊 JS Filters</button>
             </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsSiteStylesOpen(true)} className="tool-card">🎨 Site Styles</button>
+            </div>
           </div>
           <FluidTypographyCalculator />
         </div>
@@ -101,6 +106,10 @@ export default function App() {
 
         <Modal isOpen={isJsFiltersOpen} onClose={() => setIsJsFiltersOpen(false)}>
           <JsFilters />
+        </Modal>
+
+        <Modal isOpen={isSiteStylesOpen} onClose={() => setIsSiteStylesOpen(false)}>
+          <SiteStylesManager />
         </Modal>
       </div>
     </div>
