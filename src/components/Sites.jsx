@@ -21,6 +21,7 @@ const workSites = [
   { site: "Новосибирск", front: "https://easystomdental.ru/", back: "https://easystomdental.ru/wp-admin/" },
   { site: "Калининград", front: "https://kaliningrad-dental.ru/", back: "https://kaliningrad-dental.ru/wp-admin/" },
   { site: "Барнаул", front: "https://stomatologiachehova.ru/", back: "https://stomatologiachehova.ru/wp-admin/" },
+  { site: "Чебоксары", front: "https://komandamechty-cheboksary.ru/", back: "https://komandamechty-cheboksary.ru/wp-admin/" },
   { site: "Kazakhstan", front: "https://dreamteammed.kz/", back: "https://dreamteammed.kz/wp-admin/" },
 ];
 
