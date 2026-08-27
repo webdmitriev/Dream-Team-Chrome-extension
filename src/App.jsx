@@ -16,6 +16,7 @@ import ShadowWizard from './components/ShadowWizard';
 import JsFilters from './components/JsFilters';
 import FluidTypographyCalculator from './components/FluidTypographyCalculator';
 import SiteStylesManager from './components/SiteStylesManager';
+import VideoConverter from './components/VideoConverter'; // <--- Импортируем компонент
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -35,6 +36,7 @@ export default function App() {
   const [isShadowWizardOpen, setIsShadowWizardOpen] = useState(false);
   const [isJsFiltersOpen, setIsJsFiltersOpen] = useState(false);
   const [isSiteStylesOpen, setIsSiteStylesOpen] = useState(false);
+  const [isVideoConverterOpen, setIsVideoConverterOpen] = useState(false); // <--- Состояние модалки
 
   return (
     <div className="container">
@@ -52,6 +54,9 @@ export default function App() {
           <div className="tools-grids">
             <div className="tools-grid">
               <button onClick={() => setIsOptimizerOpen(true)} className="tool-card">🖼️ Optimize Images</button>
+            </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsVideoConverterOpen(true)} className="tool-card">🎬 Video Converter</button> {/* Кнопка */}
             </div>
             <div className="tools-grid">
               <button onClick={() => setIsTypografOpen(true)} className="tool-card">✍️ Typograf</button>
@@ -79,9 +84,13 @@ export default function App() {
         </div>
         <Search />
 
-        {/* Модалка с оптимизатором */}
+        {/* Модалки */}
         <Modal isOpen={isOptimizerOpen} onClose={() => setIsOptimizerOpen(false)}>
           <ImageOptimizer />
+        </Modal>
+
+        <Modal isOpen={isVideoConverterOpen} onClose={() => setIsVideoConverterOpen(false)}>
+          <VideoConverter />
         </Modal>
 
         <Modal isOpen={isTypografOpen} onClose={() => setIsTypografOpen(false)}>
