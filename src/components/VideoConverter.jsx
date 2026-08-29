@@ -2,11 +2,14 @@ import React, { useState, useRef } from 'react';
 
 export default function VideoConverter() {
   const [file, setFile] = useState(null);
+  const [mode, setMode] = useState('compress'); // 'compress' | 'webm'
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState(null);
   const [resultSize, setResultSize] = useState(null);
+  const [resultType, setResultType] = useState('webm');
   const [quality, setQuality] = useState(2500000);
+  const [resolution, setResolution] = useState('original');
   const [isDragging, setIsDragging] = useState(false);
 
   const videoRef = useRef(null);
@@ -41,7 +44,20 @@ export default function VideoConverter() {
     }
   };
 
-  const convertToWebm = async () => {
+  const getTargetDimensions = (origWidth, origHeight, targetHeight) => {
+    if (targetHeight === 'original' || origHeight <= targetHeight) {
+      return { width: origWidth, height: origHeight };
+    }
+    const aspectRatio = origWidth / origHeight;
+    const newHeight = Number(targetHeight);
+    let newWidth = Math.round(newHeight * aspectRatio);
+    
+    if (newWidth % 2 !== 0) newWidth -= 1;
+    
+    return { width: newWidth, height: newHeight };
+  };
+
+  const processVideo = async () => {
     if (!file) return;
 
     setIsProcessing(true);
@@ -57,9 +73,15 @@ export default function VideoConverter() {
       video.onloadedmetadata = () => resolve();
     });
 
+    const { width: targetWidth, height: targetHeight } = getTargetDimensions(
+      video.videoWidth,
+      video.videoHeight,
+      resolution
+    );
+
     const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    canvas.width = targetWidth;
+    canvas.height = targetHeight;
     const ctx = canvas.getContext('2d');
 
     const stream = canvas.captureStream(30);
@@ -78,18 +100,36 @@ export default function VideoConverter() {
         stream.addTrack(audioTrack);
       }
     } catch (e) {
-      console.warn('Аудиодорожка отсутствует или не доступна', e);
+      console.warn('Аудиодорожка отсутствует или недоступна', e);
+    }
+
+    // В зависимости от режима подбираем MimeType
+    let selectedMimeType = 'video/webm;codecs=vp9';
+    let fileExtension = 'webm';
+
+    if (mode === 'compress') {
+      // Попытка использовать MP4, если браузер поддержит запись в mp4, иначе фоллбек на webm
+      if (MediaRecorder.isTypeSupported('video/mp4')) {
+        selectedMimeType = 'video/mp4';
+        fileExtension = 'mp4';
+      } else if (MediaRecorder.isTypeSupported('video/webm;codecs=vp8')) {
+        selectedMimeType = 'video/webm;codecs=vp8';
+      }
     }
 
     const options = {
-      mimeType: 'video/webm;codecs=vp9',
+      mimeType: selectedMimeType,
       videoBitsPerSecond: Number(quality)
     };
 
-    const recorder = new MediaRecorder(
-      stream, 
-      MediaRecorder.isTypeSupported(options.mimeType) ? options : { mimeType: 'video/webm' }
-    );
+    const mimeToUse = MediaRecorder.isTypeSupported(options.mimeType) 
+      ? options.mimeType 
+      : 'video/webm';
+
+    const recorder = new MediaRecorder(stream, {
+      ...options,
+      mimeType: mimeToUse
+    });
 
     const chunks = [];
     recorder.ondataavailable = (e) => {
@@ -97,10 +137,13 @@ export default function VideoConverter() {
     };
 
     recorder.onstop = () => {
-      const blob = new Blob(chunks, { type: 'video/webm' });
+      const outputType = mimeToUse.includes('mp4') ? 'video/mp4' : 'video/webm';
+      const blob = new Blob(chunks, { type: outputType });
       const url = URL.createObjectURL(blob);
+      
       setResultUrl(url);
       setResultSize((blob.size / (1024 * 1024)).toFixed(2));
+      setResultType(fileExtension);
       setIsProcessing(false);
       setProgress(100);
       URL.revokeObjectURL(videoUrl);
@@ -117,7 +160,8 @@ export default function VideoConverter() {
         return;
       }
 
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(video, 0, 0, targetWidth, targetHeight);
+      
       const currentProgress = Math.min(
         Math.round((video.currentTime / video.duration) * 100),
         99
@@ -135,7 +179,31 @@ export default function VideoConverter() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.heading}>🎬 Video Converter & Compressor</h2>
+      <h2 style={styles.heading}>🎬 Video Compressor & Converter</h2>
+
+      {/* Выбор режима обработки */}
+      <div style={styles.tabGroup}>
+        <button
+          style={{
+            ...styles.tab,
+            backgroundColor: mode === 'compress' ? '#6366f1' : '#1f2937'
+          }}
+          onClick={() => { setMode('compress'); setResultUrl(null); }}
+          disabled={isProcessing}
+        >
+          📉 Сжатие разрешения
+        </button>
+        <button
+          style={{
+            ...styles.tab,
+            backgroundColor: mode === 'webm' ? '#6366f1' : '#1f2937'
+          }}
+          onClick={() => { setMode('webm'); setResultUrl(null); }}
+          disabled={isProcessing}
+        >
+          🌐 Конвертация в WebM
+        </button>
+      </div>
 
       {/* Dropzone */}
       <div 
@@ -169,19 +237,39 @@ export default function VideoConverter() {
       </div>
 
       {file && (
-        <div style={styles.settingsGroup}>
-          <label style={styles.label}>Качество / Битрейт:</label>
-          <select 
-            value={quality} 
-            onChange={(e) => setQuality(e.target.value)}
-            disabled={isProcessing}
-            style={styles.select}
-          >
-            <option value="1000000">⚡ Низкое (Макс. сжатие ~1 Mbps)</option>
-            <option value="2500000">⚖️ Среднее (Оптимально ~2.5 Mbps)</option>
-            <option value="5000000">💎 Высокое (~5 Mbps)</option>
-          </select>
-        </div>
+        <>
+          {/* Разрешение */}
+          <div style={styles.settingsGroup}>
+            <label style={styles.label}>Изменить разрешение:</label>
+            <select 
+              value={resolution} 
+              onChange={(e) => setResolution(e.target.value)}
+              disabled={isProcessing}
+              style={styles.select}
+            >
+              <option value="original">Без изменений (Оригинал)</option>
+              <option value="1440">2K (1440p)</option>
+              <option value="1080">Full HD (1080p)</option>
+              <option value="720">HD (720p)</option>
+              <option value="480">SD (480p)</option>
+            </select>
+          </div>
+
+          {/* Битрейт */}
+          <div style={styles.settingsGroup}>
+            <label style={styles.label}>Качество (Битрейт):</label>
+            <select 
+              value={quality} 
+              onChange={(e) => setQuality(e.target.value)}
+              disabled={isProcessing}
+              style={styles.select}
+            >
+              <option value="1000000">⚡ Максимальное сжатие (~1 Mbps)</option>
+              <option value="2500000">⚖️ Сбалансированное (~2.5 Mbps)</option>
+              <option value="5000000">💎 Высокое (~5 Mbps)</option>
+            </select>
+          </div>
+        </>
       )}
 
       {/* Progress Bar */}
@@ -194,7 +282,7 @@ export default function VideoConverter() {
 
       {file && (
         <button 
-          onClick={convertToWebm} 
+          onClick={processVideo} 
           disabled={isProcessing}
           style={{
             ...styles.button,
@@ -202,7 +290,11 @@ export default function VideoConverter() {
             cursor: isProcessing ? 'not-allowed' : 'pointer'
           }}
         >
-          {isProcessing ? 'Конвертация в процессе...' : 'Сконвертировать в WebM'}
+          {isProcessing 
+            ? 'Обработка...' 
+            : mode === 'compress' 
+              ? 'Сжать видео' 
+              : 'Сконвертировать в WebM'}
         </button>
       )}
 
@@ -225,10 +317,10 @@ export default function VideoConverter() {
 
           <a 
             href={resultUrl} 
-            download={`converted_${Date.now()}.webm`}
+            download={`converted_${Date.now()}.${resultType}`}
             style={styles.downloadBtn}
           >
-            💾 Скачать WebM
+            💾 Скачать {resultType.toUpperCase()}
           </a>
         </div>
       )}
@@ -252,6 +344,22 @@ const styles = {
     background: 'linear-gradient(90deg, #818cf8, #c084fc)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent'
+  },
+  tabGroup: {
+    display: 'flex',
+    gap: '8px',
+    marginBottom: '16px'
+  },
+  tab: {
+    flex: 1,
+    padding: '10px 8px',
+    borderRadius: '8px',
+    border: '1px solid #374151',
+    color: '#fff',
+    fontSize: '13px',
+    fontWeight: '500',
+    cursor: 'pointer',
+    transition: 'all 0.2s ease'
   },
   dropzone: {
     border: '2px dashed #374151',
@@ -298,8 +406,7 @@ const styles = {
     background: 'linear-gradient(135deg, #6366f1, #a855f7)',
     color: '#fff',
     fontWeight: '600',
-    fontSize: '14px',
-    transition: 'transform 0.1s ease'
+    fontSize: '14px'
   },
   progressContainer: {
     position: 'relative',
