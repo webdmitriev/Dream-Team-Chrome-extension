@@ -41,77 +41,54 @@ export default function Sites() {
   const allSites = [...workSites, ...personalSites];
 
   const checkWordPressApi = async (baseUrl) => {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 7000);
-
-    try {
-      const apiUrl = `${baseUrl.replace(/\/$/, '')}/wp-json/`;
-      
-      const response = await fetch(apiUrl, {
-        method: 'GET',
-        cache: 'no-store',
-        signal: controller.signal
-      });
-
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        const data = await response.json();
-        return Array.isArray(data?.namespaces);
-      }
-      
-      if ([403, 429, 503].includes(response.status)) {
-        return true;
-      }
-
-      return false;
-    } catch (error) {
-      clearTimeout(timeoutId);
+      const controller = new AbortController();
+      // 3 секунды таймаута более чем достаточно для легкого файла
+      const timeoutId = setTimeout(() => controller.abort(), 3000);
 
       try {
-        const fallbackController = new AbortController();
-        const fallbackTimeout = setTimeout(() => fallbackController.abort(), 5000);
-
-        await fetch(baseUrl, {
-          method: 'HEAD',
-          mode: 'no-cors',
+        // Обращаемся напрямую к нашему высокоскоростному ping-файлу
+        const healthUrl = `${baseUrl.replace(/\/$/, '')}/health.php`;
+        
+        const response = await fetch(healthUrl, {
+          method: 'GET',
           cache: 'no-store',
-          signal: fallbackController.signal
+          signal: controller.signal
         });
 
-        clearTimeout(fallbackTimeout);
-        return true; 
-      } catch (fallbackError) {
-        console.log(`[Site Down] ${baseUrl}:`, fallbackError.message);
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+          const data = await response.json();
+          return data?.status === 'ok';
+        }
+
+        return false;
+      } catch (error) {
+        clearTimeout(timeoutId);
         return false;
       }
-    }
-  };
+    };
 
+  // Последовательная проверка с задержкой 100мс между сайтами
   const checkAllSites = async () => {
     setLoading(true);
+    const newStatuses = { ...statuses };
 
-    // Проверяем ВСЕ сайты из обеих категорий одновременно
-    const promises = allSites.map(async (site) => {
+    for (const site of allSites) {
       const isAlive = await checkWordPressApi(site.front);
-      return { url: site.front, status: isAlive };
-    });
+      newStatuses[site.front] = isAlive;
+      // Маленькая пауза между запросами, чтобы разгрузить FastCGI
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
 
-    const resultsArray = await Promise.all(promises);
-
-    const results = {};
-    resultsArray.forEach(({ url, status }) => {
-      results[url] = status;
-    });
-
-    setStatuses(results);
+    setStatuses(newStatuses);
     setLoading(false);
   };
 
   useEffect(() => {
     checkAllSites();
 
-    const interval = setInterval(checkAllSites, 60000);
+    const interval = setInterval(checkAllSites, 180000);
     return () => clearInterval(interval);
   }, []);
 
