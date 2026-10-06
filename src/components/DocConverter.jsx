@@ -15,13 +15,13 @@ export default function DocConverter() {
       return;
     }
 
-    const validExtensions = ['.doc', '.docx'];
+    const validExtensions = ['.docx'];
     const ext = selected.name
       .slice(selected.name.lastIndexOf('.'))
       .toLowerCase();
 
     if (!validExtensions.includes(ext)) {
-      setError('Поддерживаются только файлы .doc и .docx');
+      setError('Поддерживается только формат .docx (Word 2007+). Старый .doc сохраните как .docx в Word.');
       setFile(null);
       return;
     }
@@ -122,7 +122,7 @@ export default function DocConverter() {
         <input
           ref={inputRef}
           type="file"
-          accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
           onChange={handleFileChange}
           id="doc-input"
           style={{ display: 'none' }}
