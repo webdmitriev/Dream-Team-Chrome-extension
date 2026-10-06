@@ -14,9 +14,9 @@ import SvgOptimizer from './components/SvgOptimizer';
 import DataGenerator from './components/DataGenerator';
 import ShadowWizard from './components/ShadowWizard';
 import JsFilters from './components/JsFilters';
-import FluidTypographyCalculator from './components/FluidTypographyCalculator';
 import SiteStylesManager from './components/SiteStylesManager';
-import VideoConverter from './components/VideoConverter'; // <--- Импортируем компонент
+import VideoConverter from './components/VideoConverter';
+import DocConverter from './components/DocConverter';
 
 // pictures
 import bg1 from "./assets/img/dream-team-bg-01.jpg";
@@ -36,7 +36,8 @@ export default function App() {
   const [isShadowWizardOpen, setIsShadowWizardOpen] = useState(false);
   const [isJsFiltersOpen, setIsJsFiltersOpen] = useState(false);
   const [isSiteStylesOpen, setIsSiteStylesOpen] = useState(false);
-  const [isVideoConverterOpen, setIsVideoConverterOpen] = useState(false); // <--- Состояние модалки
+  const [isVideoConverterOpen, setIsVideoConverterOpen] = useState(false);
+  const [isDocConverterOpen, setIsDocConverterOpen] = useState(false);
 
   return (
     <div className="container">
@@ -79,8 +80,10 @@ export default function App() {
             <div className="tools-grid">
               <button onClick={() => setIsSiteStylesOpen(true)} className="tool-card">🎨 Site Styles</button>
             </div>
+            <div className="tools-grid">
+              <button onClick={() => setIsDocConverterOpen(true)} className="tool-card">📄 DOC → PDF</button>
+            </div>
           </div>
-          <FluidTypographyCalculator />
         </div>
         <Search />
 
@@ -119,6 +122,10 @@ export default function App() {
 
         <Modal isOpen={isSiteStylesOpen} onClose={() => setIsSiteStylesOpen(false)}>
           <SiteStylesManager />
+        </Modal>
+
+        <Modal isOpen={isDocConverterOpen} onClose={() => setIsDocConverterOpen(false)}>
+          <DocConverter />
         </Modal>
       </div>
     </div>

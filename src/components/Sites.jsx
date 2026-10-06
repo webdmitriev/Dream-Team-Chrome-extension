@@ -27,8 +27,8 @@ const workSites = [
 
 // 2. Личные / Домашние сайты (добавляй сюда свои проекты)
 const personalSites = [
-  { site: "Сочи", front: "https://dreamclean-sochi.ru/", back: "https://dreamclean-sochi.ru/wp-admin/" },
-  { site: "Сочи (Адлер)", front: "https://dreamclean-sochi.ru/adler/", back: "https://dreamclean-sochi.ru/adler/wp-admin/" },
+  // { site: "Сочи", front: "https://dreamclean-sochi.ru/", back: "https://dreamclean-sochi.ru/wp-admin/" },
+  // { site: "Сочи (Адлер)", front: "https://dreamclean-sochi.ru/adler/", back: "https://dreamclean-sochi.ru/adler/wp-admin/" },
   // { site: "Мой Блог", front: "https://myblog.ru/", back: "https://myblog.ru/wp-admin/" },
 ];
 

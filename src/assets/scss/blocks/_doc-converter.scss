@@ -1,0 +1,43 @@
+.doc-converter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+}
+
+.doc-converter__dropzone {
+  border: 2px dashed #888;
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+
+.doc-converter__dropzone:hover {
+  border-color: #4caf50;
+}
+
+.doc-converter__label {
+  cursor: pointer;
+  font-size: 14px;
+  color: #eee;
+}
+
+.doc-converter__error {
+  color: #ff6b6b;
+  font-size: 13px;
+  margin: 0;
+}
+
+.doc-converter__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.doc-converter__hint {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
